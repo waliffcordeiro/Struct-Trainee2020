@@ -1,0 +1,1 @@
+# Struct-Trainee2020
