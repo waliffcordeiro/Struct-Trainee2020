@@ -12,7 +12,6 @@ velasIniciais = contador = velas
 
 loop do 
     velas = velas/2
-    print(velas)
     # O valor inicial do contador é a quantidade de velas e a cada iteração é somado quantas velas novas foram formadas
     contador += velas
     break if velas <= 1 # Se sobrou apenas 1 vela, não é possível formar uma nova vela
