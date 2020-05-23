@@ -1,6 +1,10 @@
 require_relative './classes.rb'
 require_relative './menu_conta.rb'
 
+# Lista as contas dentro de um array com um índice.
+# Essa função serve para criar um menu de seleção
+# de contas (veja o case opt when 5 do método
+# recebeOpcPrincipal)
 class Array
   def listar
     self
@@ -36,16 +40,22 @@ def recebeOpcPrincipal
         puts "Criando nova conta corrente"
         print "Digite o nome do dono da conta: "
         nome = gets.chomp
+        
         print "Digite o cpf do dono da conta(11 números sem pontos e hífens): "
         cpf = esperaNumero(11).para_cpf
+        
         print "Digite o telefone do dono da conta(9 números sem pontos e espaços): "
         telefone = esperaNumero(9).para_telefone
+        
         print "Digite a idade do dono da conta: "
         idade = esperaNumero(0).to_i
+        
         print "Digite o saldo inicial da conta: "
         saldo = esperaNumero(0).to_f
+        
         print "Digite a senha da conta: "
         senha = gets.chomp
+        
         puts "Confirma criação de conta com os seguintes dados?\n\tNome: #{nome}\n\tCPF: #{cpf}\n\tTelefone: #{telefone}\n\tIdade: #{idade}\n\tSaldo: #{saldo}\n\tSenha: #{senha}\n1. Sim\nOutro número. Não"
         if esperaNumero(0).to_i == 1
           ContaCorrente.new(nome, cpf, telefone, idade, saldo, senha)
@@ -66,18 +76,25 @@ def recebeOpcPrincipal
       system "clear"
       loop do 
         puts "Criando nova conta poupança"
+        
         print "Digite o nome do dono da conta: "
         nome = gets.chomp
+        
         print "Digite o cpf do dono da conta(11 números sem pontos e hífens): "
         cpf = esperaNumero(11).para_cpf
+        
         print "Digite o telefone do dono da conta(9 números sem pontos e espaços): "
         telefone = esperaNumero(9).para_telefone
+        
         print "Digite a idade do dono da conta: "
         idade = esperaNumero(0).to_i
+        
         print "Digite o saldo inicial da conta: "
         saldo = esperaNumero(0).to_f
+        
         print "Digite a senha da conta: "
         senha = gets.chomp
+        
         puts "Confirma criação de conta com os seguintes dados?\n\tNome: #{nome}\n\tCPF: #{cpf}\n\tTelefone: #{telefone}\n\tIdade: #{idade}\n\tSaldo: #{saldo}\n\tSenha: #{senha}\n1. Sim\nOutro número. Não"
         if esperaNumero(0).to_i == 1
           ContaPoupanca.new(nome, cpf, telefone, idade, saldo, senha)
@@ -93,11 +110,13 @@ def recebeOpcPrincipal
         puts "\nQual conta deseja acessar?"
         puts contas.listar
         opt_conta = -1
+        
         loop do
           opt_conta = esperaNumero(0).to_i
           break if opt_conta >= 1 && opt_conta <= contas.count
           puts "Opção inválida, digite novamente."
         end
+        
         menu_conta(contas[opt_conta - 1])
       else
         puts "\nNão existem contas ainda."
@@ -112,6 +131,7 @@ def menu_principal
   loop do 
     puts "Menu princial"
     printaMenuPrincipal()
+    
     break if recebeOpcPrincipal()
     puts "\nAperte enter para continuar..."
     gets

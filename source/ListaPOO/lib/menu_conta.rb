@@ -54,8 +54,10 @@ def menu_conta(conta)
   loop do 
     puts "Acessando #{conta.tipo} de #{conta.dadosPessoais[:nome]}"
     printaMenuConta()
+    
     break if recebeOpcConta(conta)
     puts "\nAperte enter para continuar..."
+
     # O gets serve só para aguardar uma entrada qualquer do usuário
     gets
     system "clear"

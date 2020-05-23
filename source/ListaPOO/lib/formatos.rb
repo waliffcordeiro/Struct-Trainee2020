@@ -9,10 +9,14 @@ class String
     Float(self) != nil rescue false
   end
   
+  # Insere caracteres para formatar uma string de números em
+  # uma string de telefone
   def para_telefone
     self.chars.insert(1,' ').insert(6,'-').join
   end
 
+  # Insere caracteres para uma string de números ser formatada
+  # como uma string de cpf
   def para_cpf
     self.chars.insert(3,'.').insert(7,'.').insert(11,'-').join
   end
