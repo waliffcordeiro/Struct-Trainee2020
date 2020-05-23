@@ -1,6 +1,8 @@
 require_relative './lib/verifica_num.rb'
 
 def fatorial(num, cond)
+  # a estrutura abaixo cria um if else inline e funciona da seguinte forma:
+  # cond ? retorno_se_true : retorno_se_false
   print cond ? "#{num} " : nil
   if num == 1
     print cond ? '= ' : nil
