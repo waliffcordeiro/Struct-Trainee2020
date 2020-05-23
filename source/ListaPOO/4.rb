@@ -13,8 +13,6 @@ class Turma
   attr_reader :materia, :alunos
 
   def qtdAprovados
-    # Retorna o número de elementos de um array que contém
-    # só hashes cujos valores da chave nota são >= 5
     self.alunos.select{ |aluno| aluno[:nota] >= 5 }.count
   end
 
@@ -41,28 +39,22 @@ materias = [
 ]
 
 print 'Insira o número de turmas desse semestre: '
-qtdTurmas = 0
-
+quantidade = 0
 loop do
-  qtdTurmas = gets.to_i
-  break if qtdTurmas >= 1 && qtdTurmas <= 10
+  quantidade = gets.to_i
+  break if quantidade >= 1 && quantidade <= 10
   print 'Quantidade inválida, insira um número entre 1 e 10: '
-end
-
-for i in 0..qtdTurmas
-  Turma.new(materias[rand(0..9)].to_sym)
 end
 
 resultado = {}
 aprovados_total = 0
 alunos_total = 0
 
-for turma in Turma.turmas
-  # Se a chave da matéria já existir, soma os números
+for i in 0..quantidade
+  turma = Turma.new(materias[rand(0..9)].to_sym)
   if resultado.key?(turma.materia)
     resultado[turma.materia][:aprovados] += turma.qtdAprovados
     resultado[turma.materia][:alunos] += turma.qtdAlunos
-  # Se a chave da matéria não existir, cria a estrutura e copia os números
   else
     resultado[turma.materia] = {aprovados: turma.qtdAprovados, alunos: turma.qtdAlunos}
   end
@@ -70,7 +62,6 @@ for turma in Turma.turmas
   alunos_total += turma.qtdAlunos
 end
 
-# Cria a chave para a contagem total
 resultado[:Total] = {aprovados: aprovados_total, alunos: alunos_total}
 
 puts resultado.map{ |materia, estats| "#{materia} ~> #{((estats[:aprovados].to_f / estats[:alunos]) * 100).round(2)}% aprovados" }
